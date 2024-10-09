@@ -1,7 +1,29 @@
 from bs4 import BeautifulSoup
 import requests
 import spotipy
-from spotipy.oauth2 import SpotifyClientCredientials
+from spotipy.oauth2 import SpotifyOauth
+from dotenv import load_dotenv
+import os
+
+load_dotenv(f"C:/Users/jay-5/Documents/code/pythonProj/timeMachine/api.env")
+CLIENT_ID = os.environ.get("CLIENT_ID")
+CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
+USERNAME = os.environ.get("USERNAME")
+
+sp = spotipy.Spotify(
+    auth_manager=SpotifyOauth(
+    scope="playlist-modify-private",
+    client_id=CLIENT_ID,
+    client_secret=CLIENT_SECRET,
+    show_dialog=True,
+    cache_path="token.txt",
+    username=USERNAME,
+    )
+)
+user_id = sp.current_user()["id"]
+
+
+playlists = sp.user_playlists('spotify')
 
 
 #input("What time would you like to travel to ? ")
