@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import spotipy
-from spotipy.oauth2 import SpotifyOauth
+from spotipy.oauth2 import SpotifyOAuth
 from dotenv import load_dotenv
 import os
 
@@ -9,9 +9,10 @@ load_dotenv(f"C:/Users/jay-5/Documents/code/pythonProj/timeMachine/api.env")
 CLIENT_ID = os.environ.get("CLIENT_ID")
 CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
 USERNAME = os.environ.get("USERNAME")
+REDIRECT_URI = os.environ.get("SPOTIPY_REDIRECT_URI")
 
 sp = spotipy.Spotify(
-    auth_manager=SpotifyOauth(
+    auth_manager=SpotifyOAuth(
     scope="playlist-modify-private",
     client_id=CLIENT_ID,
     client_secret=CLIENT_SECRET,
