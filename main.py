@@ -1,5 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredientials
+
 
 #input("What time would you like to travel to ? ")
 
