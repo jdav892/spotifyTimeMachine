@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import os
 import pprint
 
-load_dotenv(f"C:/Users/jay-5/Documents/code/pythonProj/timeMachine/api.env")
+load_dotenv(f"/timeMachine/api.env")
 CLIENT_ID = os.environ.get("CLIENT_ID")
 CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
 USERNAME = os.environ.get("USERNAME")
