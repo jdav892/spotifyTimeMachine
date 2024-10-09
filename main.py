@@ -4,7 +4,6 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from dotenv import load_dotenv
 import os
-import pprint
 
 load_dotenv(f"/timeMachine/api.env")
 CLIENT_ID = os.environ.get("CLIENT_ID")
@@ -23,14 +22,11 @@ sp = spotipy.Spotify(
 )
 user_id = sp.current_user()["id"]
 
-
 playlists = sp.user_playlists('spotify')
-
 
 date = input("What time would you like to travel to ?(In YYYY-MM-DD format) ")
 
 URL = "https://www.billboard.com/charts/hot-100/" + date
-
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"
@@ -38,13 +34,11 @@ headers = {
 
 response = requests.get(URL, headers=headers)
 
-
 url_page = response.text
 soup = BeautifulSoup(url_page, 'html.parser')
 song_list = soup.select("li ul li h3")
 song_names = [song.getText().strip() for song in song_list]
 
-    
 names = ["List of song", "Titles", "scrape"]
 
 song_uris=[]
