@@ -31,7 +31,19 @@ date = input("What time would you like to travel to ?(In YYYY-MM-DD format) ")
 
 URL = "https://www.billboard.com/charts/hot-100/" + date
 
+names = ["List of song", "Titles", "scrape"]
 
+song_uris=[]
+
+year = date.split("-")[0]
+for song in names:
+    result = sp.search(q=f"track:{song} year:{year}", type="track")
+    try:
+        uri = result["tracks"]["items"][0]["uri"]
+        song_uris.append(uri)
+    except IndexError:
+        print(f"{song} doesn't exist in Spotify. Skipped.")
+    
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"
 }
@@ -47,4 +59,4 @@ if response.status_code == 200:
 
     print(song_names)
 else:
-    print("Failed to retrieve page Status Code: ", response.status_code)
+    print("Failed to retrieve page Status Code: ", response.status_code)   
