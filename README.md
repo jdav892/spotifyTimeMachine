@@ -1,0 +1,1 @@
+A script that hits several spotify endpoints using spotipy to generate a playlist based on the Billboard top 100 of the date that the user submits, and is scraped using BeautifulSoup from the Billboard website at the specific date.
