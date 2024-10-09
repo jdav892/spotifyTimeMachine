@@ -27,7 +27,7 @@ user_id = sp.current_user()["id"]
 playlists = sp.user_playlists('spotify')
 
 
-date = input("What time would you like to travel to ? ")
+date = input("What time would you like to travel to ?(In YYYY-MM-DD format) ")
 
 URL = "https://www.billboard.com/charts/hot-100/" + date
 
